@@ -16,6 +16,8 @@ public class DetectLocationOwnRoute : MonoBehaviour
     private Vector2 deviceCoordinates;
     private float distanceFromTarget = 0.0004f;
 
+    public Button[] locationbuttons;
+
     private float dLatitude1 = 60.169539f, dLongitude1 = 24.933901f;
     private float dLatitude2 = 60.169539f, dLongitude2 = 24.933901f;
     private float dLatitude3 = 60.169539f, dLongitude3 = 24.933901f;
@@ -42,9 +44,14 @@ public class DetectLocationOwnRoute : MonoBehaviour
     {
         targetCoordinates1 = new Vector2(dLatitude1, dLongitude1);
         StartCoroutine(getLocation());
+        locationbuttons[0].onClick.AddListener(zero);
 
     }
+    
+    void zero()
+    {
 
+    }
     // Update is called once per frame
     void Update()
     {
