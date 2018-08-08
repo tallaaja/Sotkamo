@@ -1,7 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Route.unity
-  isLoaded: 0
-  isActive: 0
 - path: Assets/Scenes/PlanYourOwnRoute.unity
   isLoaded: 1
   isActive: 1

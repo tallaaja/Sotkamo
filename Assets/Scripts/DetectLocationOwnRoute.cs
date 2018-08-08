@@ -16,42 +16,40 @@ public class DetectLocationOwnRoute : MonoBehaviour
     private Vector2 deviceCoordinates;
     private float distanceFromTarget = 0.0004f;
 
-    public Button[] locationbuttons;
+    //public Button[] locationbuttons;
 
-    private float dLatitude1 = 60.169539f, dLongitude1 = 24.933901f;
-    private float dLatitude2 = 60.169539f, dLongitude2 = 24.933901f;
-    private float dLatitude3 = 60.169539f, dLongitude3 = 24.933901f;
-    private float dLatitude4 = 60.169539f, dLongitude4 = 24.933901f;
-    private float dLatitude5 = 60.169539f, dLongitude5 = 24.933901f;
-    private float dLatitude6 = 60.169539f, dLongitude6 = 24.933901f;
-    private float dLatitude7 = 60.169539f, dLongitude7 = 24.933901f;
-    private float dLatitude8 = 60.169539f, dLongitude8 = 24.933901f;
-    private float dLatitude9 = 60.169539f, dLongitude9 = 24.933901f;
-    private float dLatitude10 = 60.169539f, dLongitude10 = 24.933901f;
-    private float dLatitude11 = 60.169539f, dLongitude11 = 24.933901f;
-    private float dLatitude12 = 60.169539f, dLongitude12 = 24.933901f;
-    private float dLatitude13 = 60.169539f, dLongitude13 = 24.933901f;
-    private float dLatitude14 = 60.169539f, dLongitude14 = 24.933901f;
-    private float dLatitude15 = 60.169539f, dLongitude15 = 24.933901f;
+    public List<int> locations = new List<int>();
+
     public float sLatitude, sLongitude;
-    private Vector2 targetCoordinates1, targetCoordinates2, targetCoordinates3, targetCoordinates4, targetCoordinates5, targetCoordinates6,
-        targetCoordinates7, targetCoordinates8, targetCoordinates9, targetCoordinates10, targetCoordinates11, targetCoordinates12,
-        targetCoordinates13, targetCoordinates14, targetCoordinates15;
+    private int number;
+    private int i = 1;
+    private int k = 1;
+    public AddLocationsToList addlocationsToList;
+
+    private List<Vector2> listofCoordinates = new List<Vector2>();
 
 
     // Use this for initialization
     void Start()
     {
-        targetCoordinates1 = new Vector2(dLatitude1, dLongitude1);
-        StartCoroutine(getLocation());
-        locationbuttons[0].onClick.AddListener(zero);
+        
 
     }
-    
-    void zero()
+
+    public void letsStartGps()
     {
+        for(int j = 0; j<addlocationsToList.locations.Count; j++)
+        {
+            listofCoordinates.Add(addlocationsToList.returnCoordinates(addlocationsToList.locations[j]));
+            Debug.Log(listofCoordinates[j]);
+        }
 
+        
+        StartCoroutine(getLocation());
     }
+
+
+   
     // Update is called once per frame
     void Update()
     {
@@ -92,7 +90,7 @@ public class DetectLocationOwnRoute : MonoBehaviour
         }
         else
         {
-            text.text = "Target Location : " + dLatitude1 + ", " + dLongitude1 + "\nMy Location: " + service.lastData.latitude + ", " + service.lastData.longitude;
+            //text.text = "Target Location : " + dLatitude1 + ", " + dLongitude1 + "\nMy Location: " + service.lastData.latitude + ", " + service.lastData.longitude;
             sLatitude = service.lastData.latitude;
             sLongitude = service.lastData.longitude;
         }
@@ -106,14 +104,24 @@ public class DetectLocationOwnRoute : MonoBehaviour
 
     }
 
+
+
     public void startCalculate()
     {
         deviceCoordinates = new Vector2(sLatitude, sLongitude);
-        proximity = Vector2.Distance(targetCoordinates1, deviceCoordinates);
+
+
+        //targetcoordinates = addlocationsToList.returnCoordinates(addlocationsToList.locations[j]);
+        //text.text += listofCoordinates[0].ToString();
+        //listofCoordinates.Remove(listofCoordinates[0]);
+        proximity = Vector2.Distance(listofCoordinates[0], deviceCoordinates);
 
         if (proximity <= distanceFromTarget)
         {
-
+            text.text += "now we are in " + k +" location" + listofCoordinates[0].ToString("F6");
+            listofCoordinates.Remove(listofCoordinates[0]);
+            k++;
         }
+
     }
 }
