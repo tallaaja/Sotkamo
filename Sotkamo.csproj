@@ -232,6 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AddLocationsToList.cs" />
+    <Compile Include="Assets\GoogleApi.cs" />
     <Compile Include="Assets\Scripts\DetectLocationForAkem.cs" />
     <Compile Include="Assets\Scripts\DetectLocationOwnRoute.cs" />
     <Compile Include="Assets\Scripts\PluginWrapper.cs" />
