@@ -1,8 +1,8 @@
 Android
 PlayerPath?
-E:/Git/Sotkamo/OwnRoute.apk
+E:/Git/Sotkamo/SotkamoProj.apk
 SceneListBegin?
-Assets/Scenes/PlanYourOwnRoute.unity
+Assets/Scenes/Route.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 4b12dd839b2293f8457cd67cc3610b85 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -114,7 +114,10 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-650c1e412dac0323d37ae3023565f947 Assembly-CSharp.dll:.PluginWrapper
+df2102c952d218038ccf8d87c951e328 Assembly-CSharp.dll:.PluginWrapper
+ae64eee10eae23fec701641f2fbb8c69 Assembly-CSharp.dll:.SceneManagerScript
+e69328109fbedb70cec583f9ac815d3c Assembly-CSharp.dll:.GoogleApi
+807e299fe7602f57ef2d12ba4eb6107d Assembly-CSharp.dll:.AddLocationsToList
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -147,5 +150,4 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 05002dcf13d4f30275a9111a7182eda2 Assembly-CSharp.dll:.DetectLocationForAkem
-058908c22dca7d9cd94dcb753e7b0c16 Assembly-CSharp.dll:.DetectLocationOwnRoute
-807e299fe7602f57ef2d12ba4eb6107d Assembly-CSharp.dll:.AddLocationsToList
+d9b38dbb9628cce2232b559c98f068ff Assembly-CSharp.dll:.DetectLocationOwnRoute

@@ -18,11 +18,11 @@ public class DetectLocationOwnRoute : MonoBehaviour
 
     //public Button[] locationbuttons;
 
-    public List<int> locations = new List<int>();
-
+    public List<GameObject> locations = new List<GameObject>();
+    public Button exitButton;
     public float sLatitude, sLongitude;
     private int number;
-    private int i = 1;
+    private int i = 0;
     private int k = 1;
     public AddLocationsToList addlocationsToList;
 
@@ -32,8 +32,22 @@ public class DetectLocationOwnRoute : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        exitButton.onClick.AddListener(ExitButtonPressed);   
 
+    }
+
+    void ExitButtonPressed()
+    {
+        StartCoroutine(getLocation());
+        shutAllLocacations();
+    }
+
+    void shutAllLocacations()
+    {
+        foreach(GameObject item in locations)
+        {
+            item.SetActive(false);
+        }
     }
 
     public void letsStartGps()
@@ -41,7 +55,7 @@ public class DetectLocationOwnRoute : MonoBehaviour
         for(int j = 0; j<addlocationsToList.locations.Count; j++)
         {
             listofCoordinates.Add(addlocationsToList.returnCoordinates(addlocationsToList.locations[j]));
-            Debug.Log(listofCoordinates[j]);
+            Debug.Log(listofCoordinates[j].ToString("F6"));
         }
 
         
@@ -55,9 +69,9 @@ public class DetectLocationOwnRoute : MonoBehaviour
     {
 
     }
+    
 
-
-
+    
 
     IEnumerator getLocation()
     {
@@ -90,7 +104,7 @@ public class DetectLocationOwnRoute : MonoBehaviour
         }
         else
         {
-            //text.text = "Target Location : " + dLatitude1 + ", " + dLongitude1 + "\nMy Location: " + service.lastData.latitude + ", " + service.lastData.longitude;
+            text.text ="\nMy Location: " + service.lastData.latitude + ", " + service.lastData.longitude;
             sLatitude = service.lastData.latitude;
             sLongitude = service.lastData.longitude;
         }
@@ -110,17 +124,21 @@ public class DetectLocationOwnRoute : MonoBehaviour
     {
         deviceCoordinates = new Vector2(sLatitude, sLongitude);
 
-
+        //locations[addlocationsToList.locations[0]-1].SetActive(true);
+        //Debug.Log(addlocationsToList.locations[0]-1);
         //targetcoordinates = addlocationsToList.returnCoordinates(addlocationsToList.locations[j]);
-        //text.text += listofCoordinates[0].ToString();
-        //listofCoordinates.Remove(listofCoordinates[0]);
+        text.text += "calculating";
+
         proximity = Vector2.Distance(listofCoordinates[0], deviceCoordinates);
 
         if (proximity <= distanceFromTarget)
         {
+            StopAllCoroutines();
+            locations[addlocationsToList.locations[i]-1].SetActive(true);
             text.text += "now we are in " + k +" location" + listofCoordinates[0].ToString("F6");
             listofCoordinates.Remove(listofCoordinates[0]);
             k++;
+            i++;
         }
 
     }
